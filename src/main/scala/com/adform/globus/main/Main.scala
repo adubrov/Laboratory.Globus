@@ -11,7 +11,7 @@ import com.adform.globus.model.Pod
 
 object Main {
   def main(args: Array[String]) {
-    val pod = new Pod("testPod", "Minsk", null, List(), List(), "description test")
+    val pod = new Pod("testPod", "Minsk", "description test")
     println(pod)
   }
 }

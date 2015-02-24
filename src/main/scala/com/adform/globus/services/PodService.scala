@@ -17,8 +17,8 @@ object PodService {
    * @param parent parent POD
    * @param description POD description
    */
-  def createPod(name: String, location: String, parent: Pod, description: String): Pod = {
-    new Pod(name, location, parent, Nil, Nil, description);
+  def createPod(name: String, location: String, description: String, parent: Option[Pod] = None): Pod = {
+    new Pod(name, location, description, parent)
   }
 
   /**
@@ -26,8 +26,8 @@ object PodService {
    * @param pod POD to be changed
    * @param links list of linked PODs
    */
-  def addLinks(pod: Pod, links: List[Pod]) = {
-    pod.linked = List.concat(pod.linked, links);
+  def addLinks(pod: Pod, links: List[Pod]): Pod = {
+    pod.copy(linked = pod.linked ::: links)
   }
 
 

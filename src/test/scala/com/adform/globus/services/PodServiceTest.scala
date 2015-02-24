@@ -15,7 +15,7 @@ class PodServiceTest extends TestCase {
    * Checks POD creation.
    */
   def testCreatePod(): Unit = {
-    val newPod = PodService.createPod("testPod", "Minsk", null, "test description")
+    val newPod = PodService.createPod("testPod", "Minsk", "test description")
 
     assertNotNull(newPod)
     assertEquals(newPod.name, "testPod")
@@ -26,10 +26,10 @@ class PodServiceTest extends TestCase {
    * Checks adding linked PODs to POD.
    */
   def testAddLinks(): Unit = {
-    val newPod = PodService.createPod("testPod", "Minsk", null, "test description")
-    val pod1 = PodService.createPod("testPod1", "Minsk", null, "test description")
-    val pod2 = PodService.createPod("testPod2", "Minsk", null, "test description")
-    val pod3 = PodService.createPod("testPod2", "Minsk", null, "test description")
+    var newPod = PodService.createPod("testPod", "Minsk", "test description")
+    val pod1 = PodService.createPod("testPod1", "Minsk", "test description")
+    val pod2 = PodService.createPod("testPod2", "Minsk", "test description")
+    val pod3 = PodService.createPod("testPod2", "Minsk", "test description")
 
     assertNotNull(newPod);
     assertEquals(newPod.linked, Nil);
@@ -37,10 +37,10 @@ class PodServiceTest extends TestCase {
     val newLinked1 = List(pod1, pod2);
     val newLinked2 = List(pod3);
 
-    PodService.addLinks(newPod, newLinked1);
+    newPod = PodService.addLinks(newPod, newLinked1);
     assertEquals(newPod.linked, newLinked1);
 
-    PodService.addLinks(newPod, newLinked2);
+    newPod = PodService.addLinks(newPod, newLinked2);
     assertEquals(newPod.linked, List(pod1, pod2, pod3));
   }
 }

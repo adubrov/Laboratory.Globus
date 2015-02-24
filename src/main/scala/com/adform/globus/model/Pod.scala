@@ -8,8 +8,7 @@ package com.adform.globus.model
 
 case class Pod (name: String,
                 location: String,
-                 parent: Pod,
-                 var children: List[Pod],
-                 var linked: List[Pod],
-                 var description: String) {
-}
+                description: String,
+                 parent: Option[Pod] = None,
+                 children: List[Pod] = List.empty[Pod],
+                 linked: List[Pod] = List.empty[Pod])

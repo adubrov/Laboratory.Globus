@@ -8,6 +8,6 @@ case class Employee (name: String,
                       role: Role,
                       pod: Pod,
                       location: String,
-                      customAttributes: List[CustomAttribute])
+                      customAttributes: List[CustomAttribute] = List.empty[CustomAttribute])
 
 case class CustomAttribute(name: String, value: String)
